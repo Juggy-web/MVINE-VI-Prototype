@@ -3,9 +3,8 @@ import os
 import openai
 
 def lambda_handler(event, context):
-    # TODO implement
     
-    
+    # Calling OPENAI API
     openai.api_key = os.environ['key']
 
     response = openai.Completion.create(
@@ -16,9 +15,11 @@ def lambda_handler(event, context):
         presence_penalty=0.6,
         #stop=["Friend: ","AI: "]
         )
-        
-    text_response = response['choices'][0]['text'].strip()
     
+    # Extracting response    
+    text_response = response['choices'][0]['text'].strip()
+
+    # Returning response to Lex
     return {
         "sessionState": {
             "dialogAction": {
