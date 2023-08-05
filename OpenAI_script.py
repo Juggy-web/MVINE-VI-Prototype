@@ -9,7 +9,7 @@ def lambda_handler(event, context):
 
     response = openai.Completion.create(
         model="text-davinci-003",
-        prompt=("The following is a casual conversation between two friends.\n\nFriend: " + event['inputTranscript'] + "\nAI: "),
+        prompt=(event['inputTranscript']),
         temperature=0.5,
         max_tokens=100,
         presence_penalty=0.6,
